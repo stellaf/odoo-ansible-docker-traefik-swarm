@@ -18,7 +18,7 @@ CNAME
 *.cuba.marlonfalcon.com -> cuba.marlonfalcon.com
 ```
 
-# 3- Cconfiguramos el host en la carpeta deploy
+# 3- Configuramos el host en la carpeta Deploy
 
 # 4- Hacemos el deploy
 ```
