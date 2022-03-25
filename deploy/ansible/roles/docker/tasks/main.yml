@@ -1,0 +1,10 @@
+- name: Update APT-Cache
+  apt:
+    update_cache: yes
+
+- name: Install Ubuntu dependencies
+  apt: 
+    name:
+    - ca-certificates
+    - linux-image-extra-virtual
+    - docker.io

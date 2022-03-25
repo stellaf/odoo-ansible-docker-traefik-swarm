@@ -1,0 +1,2 @@
+[ds-master]
+164.92.108.207 ansible_user=root ansible_python_interpreter=/usr/bin/python3

@@ -1,0 +1,31 @@
+- name: Is the swarm active?
+  shell: 'docker info | grep "Swarm: active"'
+  register: swarm_active
+  ignore_errors: yes
+
+- name: Create swarm
+  command: docker swarm init --advertise-addr {{ ip }}
+  when: swarm_active.stdout|count == 0
+
+- name: Get token
+  command: docker swarm join-token -q manager
+  register: token
+
+- name: Debug
+  debug:
+    var: token
+
+- name: Set up crontab to remove the useless containers and volumes
+  cron:
+    name: Remove old containers
+    minute: "0"
+    hour: "23"
+    user: root
+    job: "docker system prune -af --volumes"
+
+- name: Hostname
+  debug:
+    var: ansible_facts.hostname
+
+- name: Mark this node as loadbalancer
+  command: "docker node update --label-add loadbalancer=1 {{ ansible_facts.hostname }}"

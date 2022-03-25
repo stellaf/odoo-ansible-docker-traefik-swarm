@@ -1,0 +1,2 @@
+- name: Leave the swarm
+  command: docker swarm leave --force
