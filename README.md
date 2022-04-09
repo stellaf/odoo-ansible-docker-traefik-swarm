@@ -4,12 +4,12 @@ http://traefik.demo.marlonfalcon.com/dashboard/#/
 http://swarm.demo.marlonfalcon.com/
 ```
 
-# 1- Creamos el server y copiamos la llave
+# 1- We create the server and copy the key
 ```
 ssh-copy-id root@1.1.1.1
 ```
 
-# 2- Creamos los DNS
+# 2- We create the DNS
 ```
 A
 cuba.marlonfalcon.com -> 1.1.1.1
@@ -18,15 +18,15 @@ CNAME
 *.cuba.marlonfalcon.com -> cuba.marlonfalcon.com
 ```
 
-# 3- Configuramos el host en la carpeta Deploy
+# 3- We configure the host in the Deploy folder
 
-# 4- Hacemos el deploy
+# 4- We do the deployment
 ```
 cd deploy/ansible
 ansible-playbook -i inventories/cuba.marlonfalcon.com -e domain_name=cuba.marlonfalcon.com playbook-master.yml
 ```
 
-# 5- Instalamos el docker yml en el stack
+# 5- We install the docker yml on the stack
 ```
 version: '3.7'
 services:
